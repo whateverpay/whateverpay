@@ -52,6 +52,34 @@ public class PayHelper {
         context.startActivity(intent);
     }
 
+    public static void entrustAndPay(Context context,String nonce_str,String contract_id,String appid,String signType,String sign,String mch_id,String timestamp,
+                                     String out_trade_no, String total_fee, String attach,
+                                     String spbill_create_ip, String pay_notify_url,String body,
+                                     EntrustAndPayListener entrustAndPayListener){
+        if (!isWhatEverPayAvailable(context)){
+            entrustAndPayListener.onUnAvailable();
+            return;
+        }
+        Intent intent = new Intent(context,WhatEverPayActivity.class);
+        intent.putExtra("type","entrust")
+                .putExtra("nonce_str",nonce_str)
+                .putExtra("contract_id",contract_id)
+                .putExtra("appid",appid)
+                .putExtra("sign_type",signType)
+                .putExtra("sign",sign)
+                .putExtra("mch_id",mch_id)
+                .putExtra("timestamp",timestamp)
+                .putExtra("out_trade_no",out_trade_no)
+                .putExtra("total_fee",total_fee)
+                .putExtra("attach",attach)
+                .putExtra("spbill_create_ip",spbill_create_ip)
+                .putExtra("pay_notify_url",pay_notify_url)
+                .putExtra("body",body);
+
+        WhatEverPayActivity.setEntrustAndPayListener(entrustAndPayListener);
+        context.startActivity(intent);
+    }
+
     /**
      * 检测是否安装了WhatEverPay
      * @param context
