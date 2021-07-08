@@ -52,7 +52,7 @@ public class PayHelper {
         context.startActivity(intent);
     }
 
-    public static void entrustAndPay(Context context,String nonce_str,String contract_id,String appid,String signType,String sign,String mch_id,String timestamp,
+    public static void entrustAndPay(Context context,String fee_type, String nonce_str,String contract_id,String appid,String signType,String sign,String mch_id,String timestamp,
                                      String out_trade_no, String total_fee, String attach,
                                      String spbill_create_ip, String pay_notify_url,String body,
                                      EntrustAndPayListener entrustAndPayListener){
@@ -62,6 +62,7 @@ public class PayHelper {
         }
         Intent intent = new Intent(context,WhatEverPayActivity.class);
         intent.putExtra("type","entrust")
+                .putExtra("fee_type",fee_type)
                 .putExtra("nonce_str",nonce_str)
                 .putExtra("contract_id",contract_id)
                 .putExtra("appid",appid)
