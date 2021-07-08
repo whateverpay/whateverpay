@@ -17,7 +17,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-	implementation 'com.github.whateverpay:whateverpay:v1.0.0'
+	implementation 'com.github.whateverpay:whateverpay:v1.0.1'
 }
 ```
   
